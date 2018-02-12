@@ -44,7 +44,7 @@ class bxup_productioncalendar extends CModule
     {
         $this->MODULE_ID = 'bxup.productioncalendar';
         $this->MODULE_VERSION = '1.0.0';
-        $this->MODULE_VERSION_DATE = '2018-01-01 00:00:01';
+        $this->MODULE_VERSION_DATE = '2017-11-01 00:00:01';
         $this->MODULE_NAME = Loc::getMessage('MODULE_NAME');
         $this->MODULE_DESCRIPTION = Loc::getMessage('MODULE_DESCRIPTION');
         $this->MODULE_GROUP_RIGHTS = 'N';

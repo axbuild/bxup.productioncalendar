@@ -153,5 +153,10 @@ class ProductionCalendar
 		return count($this->days[$type]);
 	}
 
+	public function __toString ()
+	{
+		return get_class($this);
+	}
+
 }
 ?>
