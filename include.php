@@ -1,20 +1,9 @@
-<?php
+<?php defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
 
-use Bitrix\Main\Loader;
-use Bitrix\Main\EventManager;
-
-defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
-
-Loader::registerAutoLoadClasses(
-	'bxup.productioncalendar', 
+Bitrix\Main\Loader::registerAutoLoadClasses(
+	'bxup.crmhookclient', 
 	[
-		'BxUp\ProductionCalendar\DataGovRu' => 'lib/DataGovRu.php',
-		'BxUp\ProductionCalendar\Params' => 'lib/Params.php',
-		'BxUp\ProductionCalendar\Table' => 'lib/Table.php',
-		'BxUp\ProductionCalendar' => 'lib/ProductionCalendar.php',
+		'BxUp\CRMHookClient\Table' => 'lib/CRMHookTable.php',
+		'BxUp\CRMHookClient' => 'lib/CRMHookClient.php',
 	]
 );
-
-EventManager::getInstance()->addEventHandler('main', 'OnAfterUserAdd', function(){
-	// do something
-});

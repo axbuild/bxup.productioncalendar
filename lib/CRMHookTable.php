@@ -1,7 +1,5 @@
 <?php
-namespace BxUp\ProductionCalendar;
-
-defined('B_PROLOG_INCLUDED') and (B_PROLOG_INCLUDED === true) or die();
+namespace BxUp\CRMHookClient;
 
 use Bitrix\Main;
 use Bitrix\Main\Entity;
@@ -11,22 +9,7 @@ use Bitrix\Main\Localization\Loc;
 
 Loc::loadLanguageFile(__FILE__);
 
-/**
- * Class Table
- * 
- * Fields:
- * <ul>
- * <li> ID int mandatory
- * <li> UF_DATE_CREATE datetime optional
- * <li> UF_USER int optional
- * <li> UF_LEAD string optional
- * <li> UF_LEVEL int optional
- * </ul>
- *
- * @package Bitrix\
- **/
-
-class ProductionCalendarTable extends Main\Entity\DataManager
+Class Table extends Main\Entity\DataManager
 {
     /**
      * Returns DB table name for entity.
@@ -35,9 +18,8 @@ class ProductionCalendarTable extends Main\Entity\DataManager
      */
     public static function getTableName()
     {
-        return 'productioncalendar';
+        return 'crmhooktable';
     }
-
     /**
      * Returns entity map definition.
      *
@@ -56,20 +38,14 @@ class ProductionCalendarTable extends Main\Entity\DataManager
                 'data_type' => 'datetime',
                 'title' => Loc::getMessage('_ENTITY_UF_DATE_CREATE_FIELD'),
             ),
-            'UF_YEAR' => array(
+            'UF_SUCCESS' => array(
                 'data_type' => 'integer',
-                'title' => Loc::getMessage('_ENTITY_UF_USER_FIELD'),
+                'title' => Loc::getMessage('_ENTITY_UF_SUCCESS'),
             ),
-            'UF_JSON' => array(
+            'UF_DATA' => array(
                 'data_type' => 'text',
-                'title' => Loc::getMessage('_ENTITY_UF_LEAD_FIELD'),
+                'title' => Loc::getMessage('_ENTITY_UF_DATA'),
             )
         );
     }
-
-}
-
-class Table extends ProductionCalendarTable
-{
-
 }
