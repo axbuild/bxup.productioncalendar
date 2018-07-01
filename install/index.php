@@ -6,15 +6,15 @@ use Bitrix\Main\Loader;
 use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\Config\Option;
-use BxUp\CRMHookClient\Table;
+use BxUp\ProductionCalendar\Table;
 
 Loc::loadMessages(__FILE__);
 
-if (class_exists('bxup_crmhookclient')) {
+if (class_exists('bxup_productioncalendar')) {
     return;
 }
 
-class bxup_crmhookclient extends CModule
+class bxup_productioncalendar extends CModule
 {
     /** @var string */
     public $MODULE_ID;
@@ -42,9 +42,9 @@ class bxup_crmhookclient extends CModule
 
     public function __construct()
     {
-        $this->MODULE_ID = 'bxup.crmhookclient';
+        $this->MODULE_ID = 'bxup.productioncalendar';
         $this->MODULE_VERSION = '1.0.0';
-        $this->MODULE_VERSION_DATE = '2018-06-30 00:00:01';
+        $this->MODULE_VERSION_DATE = '2017-11-01 00:00:01';
         $this->MODULE_NAME = Loc::getMessage('MODULE_NAME');
         $this->MODULE_DESCRIPTION = Loc::getMessage('MODULE_DESCRIPTION');
         $this->MODULE_GROUP_RIGHTS = 'N';

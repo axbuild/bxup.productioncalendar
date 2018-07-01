@@ -4,7 +4,7 @@ use Bitrix\Main\Application;
 use Bitrix\Main\Config\Option;
 use Bitrix\Main\Localization\Loc;
 
-defined('ADMIN_MODULE_NAME') or define('ADMIN_MODULE_NAME', 'bxup.crmhookclient');
+defined('ADMIN_MODULE_NAME') or define('ADMIN_MODULE_NAME', 'bxup.productioncalendar');
 
 if (!$USER->isAdmin()) {
 		$APPLICATION->authForm('Nope');
@@ -13,8 +13,7 @@ if (!$USER->isAdmin()) {
 $app = Application::getInstance();
 $context = $app->getContext();
 $request = $context->getRequest();
-$hook = $request->getPost('crm_hook_secret');
-$profile = $request->getPost('profile');
+$token = $request->getPost('token');
 
 Loc::loadMessages($context->getServer()->getDocumentRoot()."/bitrix/modules/main/options.php");
 Loc::loadMessages(__FILE__);
@@ -41,9 +40,9 @@ if ((!empty($save) || !empty($restore)) && $request->isPost() && check_bitrix_se
 				]
 			);
 		} 
-		elseif ($hook)
+		elseif ($token)
 		{
-			Option::set(ADMIN_MODULE_NAME, "crm_hook_secret", $hook);
+			Option::set(ADMIN_MODULE_NAME, "token", $token);
 			CAdminMessage::showMessage(
 				[
 					"MESSAGE" => Loc::getMessage("REFERENCES_OPTIONS_SAVED"),
@@ -71,13 +70,13 @@ $tabControl->begin();
 		?>
 		<tr>
 			<td width="40%">
-				<label for="crm_hook_secret"><?=Loc::getMessage("REFERENCES_HOOK") ?>:</label>
+				<label for="token"><?=Loc::getMessage("REFERENCES_TOKEN") ?>:</label>
 			<td width="60%">
 				<input type="text"
 					size="50"
-					maxlength="300"
-					name="crm_hook_secret"
-					value="<?=Option::get(ADMIN_MODULE_NAME, "crm_hook_secret", '');?>"
+					maxlength="100"
+					name="token"
+					value="<?=Option::get(ADMIN_MODULE_NAME, "token", '');?>"
 					/>
 			</td>
 		</tr>
